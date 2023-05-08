@@ -16,7 +16,9 @@ module.exports.generateAnswer = async (req, res) => {
             messages: [{ role: "user", content: ` Could you create a special card message for this ${theme} for ${name}` }],
         });
         console.log(response.data.choices[0].message.content);
-        res.status(200).json({ message: response.data.choices[0].message.content })
+        // res.status(200).json({ message: response.data.choices[0].message.content })
+        res.status(200).json({ message: response.data.choices[0].message.content, content: response.data.choices[0].message.content });
+
 
 
         // const completion = await openai.createCompletion({
@@ -28,6 +30,7 @@ module.exports.generateAnswer = async (req, res) => {
 
     } catch (error) {
         console.error(error);
-        responsData(500, false, 'Something went wrong.');
+        res.status(500).json({ error: 'Bir hata oluştu' });
+        // responsData(500, false, 'Something went wrong.');
     }
 };

@@ -13,12 +13,12 @@ require('./middlewares/index')(app);
 
 //Route imports
 const userRoute = require('./routes/userRoutes');
-// const authRoute = require('./routes/authRoutes');
+const sendEmailRoutes = require('./routes/sendEmailRoutes')
 const surpriseRoute = require('./routes/surpriseRoutes');
 
 // Routes
 app.use('/api/users', userRoute);
 app.use('/api/surprise', surpriseRoute);
-// app.use('/api/auth', authRoute);
+app.use('/api/sendEmail', sendEmailRoutes);
 
 module.exports = app;
