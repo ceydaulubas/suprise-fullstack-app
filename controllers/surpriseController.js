@@ -8,12 +8,12 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 module.exports.generateAnswer = async (req, res) => {
-    const { name, email, theme } = req.body;
+    const { name, email, theme, relative } = req.body;
 
     try {
         const response = await openai.createChatCompletion({
             model: "gpt-3.5-turbo",
-            messages: [{ role: "user", content: ` Could you create a special card message for this ${theme} for ${name}` }],
+            messages: [{ role: "user", content: ` Could you create a special card message for this ${theme} for ${name}. This perosn is my ${relative}` }],
         });
         console.log(response.data.choices[0].message.content);
         // res.status(200).json({ message: response.data.choices[0].message.content })

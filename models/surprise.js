@@ -11,6 +11,10 @@ const surpriseSchema = new Schema(
       type: String,
       required: true,
     },
+    relative: {
+      type: String,
+      required: true,
+    },
     theme: {
       type: String,
       required: true,

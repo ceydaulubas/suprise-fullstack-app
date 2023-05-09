@@ -1,4 +1,6 @@
 const nodemailer = require('nodemailer');
+const { newYearTemplate, mothersDayTemplate } = require('./emailTemplates');
+
 
 const transporter = nodemailer.createTransport({
     service: 'hotmail',
@@ -12,9 +14,27 @@ const transporter = nodemailer.createTransport({
 });
 
 module.exports.sendMail = async (req, res) => {
-    const { name, email, theme } = req.body;
+    const { name, email, theme, relative } = req.body;
 
-    const subject = `${name} celabrete for ${theme}`;
+    const subject = `${name} celebrate for ${theme}`;
+
+    const getTemplate = (theme, message) => {
+        switch (theme) {
+            case `new year`:
+                return newYearTemplate(message);
+            case `birthday`:
+                return mothersDayTemplate(message);
+            case `valentine's day`:
+                return mothersDayTemplate(message);
+            case `mother's day`:
+                return mothersDayTemplate(message);
+            case `father's day`:
+                return mothersDayTemplate(message);
+
+            default:
+                return '';
+        }
+    };
 
 
     const mailOptions = {
@@ -22,6 +42,7 @@ module.exports.sendMail = async (req, res) => {
         to: email,
         subject: subject,
         text: req.body.message,
+        html: getTemplate(theme, req.body.message)
 
     };
 
