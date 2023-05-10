@@ -6,8 +6,7 @@ const response = new Response();
 const necessaryData = (response) => {
   return {
     _id: response._id,
-    name: response.name,
-    surname: response.surname,
+    username: response.username,
     email: response.email,
     created: response.created,
     password: response.password,
@@ -67,8 +66,7 @@ module.exports.getById = async (req, res) => {
 module.exports.create = async (req, res) => {
   const user = new User({
     email: req.body.email,
-    name: req.body.name,
-    surname: req.body.surname,
+    username: req.body.username,
     created: req.body.created,
     password: req.body.password,
   });
@@ -116,7 +114,7 @@ module.exports.update = async (req, res) => {
     { _id: id },
     {
       $set: {
-        name: req.body.name,
+        username: req.body.username,
         email: req.body.email,
         password: req.body.password,
         active: req.body.active,

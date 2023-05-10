@@ -7,13 +7,9 @@ const userSchema = new Schema(
       required: true,
       match: /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/
     },
-    name: {
+    username: {
       type: String,
       required: true,
-    },
-    surname: {
-      type: String,
-      required: false,
     },
     created: {
       type: String,
@@ -22,6 +18,9 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: true,
+    },
+    token: {
+      type: String
     }
   },
   {

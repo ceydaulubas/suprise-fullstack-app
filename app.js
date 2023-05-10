@@ -15,10 +15,12 @@ require('./middlewares/index')(app);
 const userRoute = require('./routes/userRoutes');
 const sendEmailRoutes = require('./routes/sendEmailRoutes')
 const surpriseRoute = require('./routes/surpriseRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 // Routes
 app.use('/api/users', userRoute);
 app.use('/api/surprise', surpriseRoute);
 app.use('/api/sendEmail', sendEmailRoutes);
+app.use('/api/auth', authRoutes);
 
 module.exports = app;
