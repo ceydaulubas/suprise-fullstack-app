@@ -49,11 +49,14 @@ To install and run this application on your local machine, follow these steps:
 Provide a list of the available API endpoints, their purposes, and example requests/responses.
 
 Example:
+<br>
 
 - http://localhost:5001/api/auth/login
+  <br>
 - http://localhost:5001/api/auth/signup
-
+  <br>
 - http://localhost:5001/api/surprise/ ->Body: email, name, relative, theme, sender
+  <br>
 - http://localhost:5001/api/allsurprises?email=${email}
 
 ## Technologies Used
