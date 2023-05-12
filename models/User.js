@@ -19,6 +19,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    surprises: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Surprise'
+    }],
     token: {
       type: String
     }

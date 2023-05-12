@@ -1,12 +1,12 @@
 const nodemailer = require('nodemailer');
-const { newYearTemplate, mothersDayTemplate } = require('./emailTemplates');
+const { newYearTemplate, mothersDayTemplate, valentinesDayTemplate, fathersDayTemplate, birthdayTemplate } = require('./emailTemplates');
 
 
 const transporter = nodemailer.createTransport({
     service: 'hotmail',
     auth: {
         user: 'developercu@hotmail.com',
-        pass: 'LZ8YfeZFY4LR5n',
+        pass: process.env.EMAIL_PASSWORD,
     },
     tls: {
         rejectUnauthorized: false,
@@ -14,23 +14,22 @@ const transporter = nodemailer.createTransport({
 });
 
 module.exports.sendMail = async (req, res) => {
-    const { name, email, theme, relative } = req.body;
+    const { name, email, theme } = req.body;
 
-    const subject = `${name} celebrate for ${theme}`;
+    const subject = `You have an email from ${name} to celebrate your ${theme}`;
 
     const getTemplate = (theme, message) => {
         switch (theme) {
             case `new year`:
                 return newYearTemplate(message);
             case `birthday`:
-                return mothersDayTemplate(message);
+                return birthdayTemplate(message);
             case `valentine's day`:
-                return mothersDayTemplate(message);
+                return valentinesDayTemplate(message);
             case `mother's day`:
                 return mothersDayTemplate(message);
             case `father's day`:
-                return mothersDayTemplate(message);
-
+                return fathersDayTemplate(message);
             default:
                 return '';
         }
@@ -43,16 +42,15 @@ module.exports.sendMail = async (req, res) => {
         subject: subject,
         text: req.body.message,
         html: getTemplate(theme, req.body.message)
-
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
             console.log(error);
-            res.status(500).send('E-posta gönderilemedi.');
+            res.status(500).send('Failed to send email.');
         } else {
-            console.log('E-posta gönderildi: ' + info.response);
-            res.status(200).send('E-posta başarıyla gönderildi.');
+            console.log('Email sent: ' + info.response);
+            res.status(200).send('Email sent successfully.');
         }
     });
 };

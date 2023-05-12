@@ -18,6 +18,14 @@ const surpriseSchema = new Schema(
     theme: {
       type: String,
       required: true,
+    },
+    sender: {
+      type: String,
+      required: true,
+    },
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
     }
   },
   {
@@ -25,4 +33,4 @@ const surpriseSchema = new Schema(
   }
 );
 
-module.exports.Surprise = model('Suprise', surpriseSchema);
+module.exports.Surprise = model('Surprise', surpriseSchema);
