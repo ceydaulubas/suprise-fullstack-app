@@ -26,7 +26,7 @@ The email template used for sending surprise emails can be found in emailTemplat
 
 Note: The email interface is optimized for mobile devices and provides a better user experience on smaller screens. Therefore, viewing on a mobile device is recommended.
 
- <img src="https://res.cloudinary.com/dxqyvjf5r/image/upload/v1683912490/register%20form/birthday_wdz5il.jpg" width="500" title="Welcoming Page">
+ <img src="https://res.cloudinary.com/dxqyvjf5r/image/upload/v1683912490/register%20form/birthday_wdz5il.jpg" width="300" title="Welcoming Page">
  
 ## Installation
 
