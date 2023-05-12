@@ -44,13 +44,6 @@ module.exports.generateAnswer = async (req, res) => {
 
         res.status(200).json({ message: response.data.choices[0].message.content, content: response.data.choices[0].message.content, surprise: newSurprise });
 
-        // const completion = await openai.createCompletion({
-        //     model: "text-davinci-003",
-        //     prompt: ` Could you create a special card message for this ${thema} for ${name}`,
-        // });
-        // console.log(completion.data.choices[0].text);
-        // res.status(200).json({ message: completion.data.choices[0].text })
-
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Something went wrong.' });
