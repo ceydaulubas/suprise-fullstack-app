@@ -26,6 +26,10 @@ const surpriseSchema = new Schema(
     user: {
       type: Schema.Types.ObjectId,
       ref: 'User'
+    },
+    message: {
+      type: String,
+      required: true,
     }
   },
   {

@@ -87,13 +87,13 @@ module.exports.loginUser = async (req, res) => {
 
         if (!user) {
             res.status(400);
-            throw new Error("Invalid email or password");
+            throw new Error("There is no user");
         }
 
         // Check if password is correct
         const isPasswordValid = await bcrypt.compare(password, user.password);
         if (!isPasswordValid) {
-            return res.status(400).json({ message: "Invalid email or password" });
+            return res.status(400).json({ message: "Invalid password" });
         }
 
         // Create JWT token
@@ -104,11 +104,11 @@ module.exports.loginUser = async (req, res) => {
         );
 
         res.status(200).json({ token, message: "Logged in successfully" });
-        console.log("response", response)
+        // console.log("response", response)
     }
     catch (error) {
         res.status(500).json({ message: "An error occurred while logging in" });
-        console.log("response", response)
+        // console.log("response", response)
     }
 
 };

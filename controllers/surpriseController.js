@@ -31,8 +31,8 @@ module.exports.generateAnswer = async (req, res) => {
             theme: theme,
             relative: relative,
             sender: sender,
-            user: user
-
+            user: user,
+            message: response.data.choices[0].message.content,
         });
 
         await newSurprise.save();
